@@ -23,27 +23,4 @@ int main(int argc, char **argv)
                 << i.functionName << "\t"
                 << i.expression << "\t"
                 << i.resultCode << std::endl;
-
-    //std::string scriptFile = "/mnt/c/Users/Simon/Documents/FileCpp/src/ruby/functions.rb";
-    
-    /* std::string testRubyFile = scriptFile;
-
-    ScriptCaller::FunctionList fList = { "hello", "add", "concat", "makeArray" };
-    ScriptCaller::ClassList cList = { "Fred" };
-
-    ScriptCaller::RubyFile rb(testRubyFile, fList, cList);
-    rb.createFile();
-    rb.launchScript();
-    {
-        auto answer = rb.createObject<json>("Fred", "fred", "cat", 99);
-        std::cout << answer << std::endl;
-    }
-    {
-        auto answer = rb.callMethod<std::string>("fred", "hi");
-        std::cout << answer << std::endl;
-    } */
-    /* for (auto& i: answer)
-        std::cout << i << std::endl; */
 }
-
-// à faire: changer les pipes nommés en sockets
