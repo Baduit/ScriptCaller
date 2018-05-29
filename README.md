@@ -35,4 +35,4 @@ In order to run the test on linux:
 Then you should see the number of successful tests, warnings, errors and critical errors and if there is errors you will see the file, the line, the expression of the test and the result (warning, error or critical erros).
 
 ### Why not use the Boost unit test library or an equivalent?
-It is a personnal project and i wanted develop one on my own for the fun.
+It is a personnal project and i wanted develop the little tool to manage the testing on my own for the fun.
