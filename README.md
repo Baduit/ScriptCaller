@@ -51,7 +51,7 @@ int main()
 	// call a static method named "staticHi" of a class named Fred which return a string
 	script.callStaticMethod<std::string>("Fred", "staticHi");
 
-	// create an instance of the class Fred named fred with the constructor parametor,
+	// create an instance of the class Fred named fred with the constructor parameter,
     	// then get the object and at the end call a method of this object
 	script.createObject("Fred", "fred", "cat", 99);
 	script.getObject<json>("fred");
