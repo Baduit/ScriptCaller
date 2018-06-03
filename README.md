@@ -40,7 +40,7 @@ It is a personnal project and i wanted develop the little tool to manage the tes
 ## How to use it?
 Here a little example of how you can use the lib.
 
-```
+```C++
 int main()
 {
  	ScriptCaller::RubyScriptCaller script("../src/ruby/functions.rb");
@@ -52,10 +52,10 @@ int main()
 	script.callStaticMethod<std::string>("Fred", "staticHi");
 
 	// create an instance of the class Fred named fred with the constructor parametor,
-    // then get the object and at the end call a method of this object
+    	// then get the object and at the end call a method of this object
 	script.createObject("Fred", "fred", "cat", 99);
 	script.getObject<json>("fred");
-    script.callMethod<std::string>("fred", "hi");
+    	script.callMethod<std::string>("fred", "hi");
 
 	// store an integer and then get it back
 	script.storeValue("myInt", 55);
