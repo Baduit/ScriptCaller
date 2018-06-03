@@ -49,7 +49,7 @@ TestSuiteResult	basicTestRubyFile()
 			}
 			// storeValue & getValue
 			{
-				TEST_ERROR((rb.storeValue<int>("myInt", 55) == 55));
+				rb.storeValue("myInt", 55);
 				TEST_ERROR((rb.getValue<int>("myInt") == 55));
 			}
 		}

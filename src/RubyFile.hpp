@@ -225,6 +225,17 @@ class RubyFile
 			return callScript<returnType>(j);
 		}
 
+		template<typename ... Args>
+		void		createObject(const std::string& className, const std::string& objectName, Args&& ... args)
+		{
+			json	j;
+			j["className"] = className;
+			j["objectName"] = objectName;
+			j["actionType"] = ActionType::createObject;
+			addArgsToJson(j, std::forward<Args>(args) ...);
+			callScript(j);
+		}
+
 		template<typename returnType, typename ... Args>
 		returnType	createObject(const std::string& className, const std::string& objectName, Args&& ... args)
 		{
@@ -236,14 +247,14 @@ class RubyFile
 			return callScript<returnType>(j);
 		}
 
-		template<typename returnType, typename inputType>
-		returnType	storeValue(const std::string& valueName, const inputType& value)
+		template<typename inputType>
+		void		storeValue(const std::string& valueName, const inputType& value)
 		{
 			json	j;
 			j["valueName"] = valueName;
 			j["value"] = value;
 			j["actionType"] = ActionType::storeValue;
-			return callScript<returnType>(j);
+			callScript(j);
 		}
 
 		template<typename returnType>
@@ -272,6 +283,12 @@ class RubyFile
 		}
 
 	private:
+		void	callScript(const json& j)
+		{
+			sendInputToScript(j.dump());
+			_outputNamedPipe->read();
+		}
+
 		template<typename returnType>
 		returnType	callScript(const json& j)
 		{

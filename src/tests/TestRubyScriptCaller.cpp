@@ -31,9 +31,11 @@ TestSuiteResult	basicTestRubyScriptCaller()
 		}
 		// createObject & getObjet & callMethod
 		{
-			auto createdObject = script.createObject<json>("Fred", "fred", "cat", 99);
-			TEST_ERROR((createdObject["a"] == "cat"));
+			auto createdObject = script.createObject<json>("Fred", "freddy", "catty", 99);
+			TEST_ERROR((createdObject["a"] == "catty"));
 			TEST_ERROR((createdObject["b"] == 99));
+
+			script.createObject("Fred", "fred", "cat", 99);
 	
 			auto objectFromScript = script.getObject<json>("fred");
 			TEST_ERROR((objectFromScript["a"] == "cat"));
@@ -44,7 +46,7 @@ TestSuiteResult	basicTestRubyScriptCaller()
 		}
 		// storeValue & getValue
 		{
-			TEST_ERROR((script.storeValue<int>("myInt", 55) == 55));
+			script.storeValue("myInt", 55);
 			TEST_ERROR((script.getValue<int>("myInt") == 55));
 		}
 	}

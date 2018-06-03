@@ -39,16 +39,22 @@ class RubyScriptCaller
 			return _rubyFile.callMethod<returnType>(objectName, methodName, std::forward<Args>(args) ...);
 		}
 
+		template<typename ... Args>
+		void	createObject(const std::string& className, const std::string& objectName, Args&& ... args)
+		{
+			_rubyFile.createObject(className, objectName, std::forward<Args>(args) ...);
+		}
+
 		template<typename returnType, typename ... Args>
 		returnType	createObject(const std::string& className, const std::string& objectName, Args&& ... args)
 		{
 			return _rubyFile.createObject<returnType>(className, objectName, std::forward<Args>(args) ...);
 		}
 
-		template<typename returnType, typename inputType>
-		returnType	storeValue(const std::string& valueName, const inputType& value)
+		template<typename inputType>
+		void	storeValue(const std::string& valueName, const inputType& value)
 		{
-			return _rubyFile.storeValue<returnType>(valueName, value);
+			_rubyFile.storeValue(valueName, value);
 		}
 
 		template<typename returnType>
