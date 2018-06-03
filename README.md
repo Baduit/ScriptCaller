@@ -1,5 +1,5 @@
 # ScriptCaller
-This is a header only library C++ allowing us to call ruby scripts in only few line of codes. It does not need to "adjust" the script.
+This is a header only C++ library allowing us to call ruby scripts in only few line of codes. It does not need to "adjust" the script.
 
 ## Why should i use it?
 If you are using C++ and you need/want to use or a ruby script, then this is the library for you.
