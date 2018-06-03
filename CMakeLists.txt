@@ -14,6 +14,7 @@ set(SRCS
     src/tests/main.cpp
     src/tests/TestRubyFile.cpp
     src/tests/TestRubyParser.cpp
+    src/tests/TestRubyScriptCaller.cpp
     )
 
 add_executable(test.exe ${SRCS})

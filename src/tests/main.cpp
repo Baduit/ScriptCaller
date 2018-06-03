@@ -4,14 +4,11 @@
 #include "tests/AutoTest.hpp"
 #include "tests/TestRubyParser.hpp"
 #include "tests/TestRubyFile.hpp"
-
-#define STRISATION(expr) "expr"
-
-using json = nlohmann::json;
+#include "tests/TestRubyScriptCaller.hpp"
 
 int main(int argc, char **argv)
 {
-    auto result = Test::AutoTest(&basicTestRubyParser, &basicTestRubyFile)();
+    auto result = Test::AutoTest(&basicTestRubyParser, &basicTestRubyFile, &basicTestRubyScriptCaller)();
 
     std::cout << result;
 

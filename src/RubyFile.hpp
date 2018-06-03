@@ -49,6 +49,13 @@ class RubyFile
 		
 		~RubyFile() { close(); }
 
+		void	init(std::string fileName, const FunctionList& fList, const ClassList& cList)
+		{
+			requiredFileName = fileName;
+			functions = fList;
+			classes = cList;
+		}
+
 		void	createFile()
 		{
 			// create the file with a header
@@ -183,6 +190,7 @@ class RubyFile
 
 			_inputNamedPipe->open(WRITE);
 			_outputNamedPipe->open(READ);
+			_pipesAreOpen = true;
 		}
 
 		template<typename returnType, typename ... Args>
@@ -258,7 +266,9 @@ class RubyFile
 
 		void	close()
 		{
-			_inputNamedPipe->write("__STOP_SCRIPT__\n");
+			if (_pipesAreOpen)
+				_inputNamedPipe->write("__STOP_SCRIPT__\n");
+			_pipesAreOpen = false;
 		}
 
 	private:
@@ -294,6 +304,7 @@ class RubyFile
 
 	private:
 		std::string						_outputFileName;
+		bool							_pipesAreOpen = false;
 		std::string						_namedPipeInputName; // cpp to script, script read here
 		std::string						_namedPipeOutputName; // script to cpp, script write here
 
