@@ -43,22 +43,22 @@ Here a little example of how you can use the lib.
 ```
 int main()
 {
-    ScriptCaller::RubyScriptCaller script("../src/ruby/functions.rb");
+ 	ScriptCaller::RubyScriptCaller script("../src/ruby/functions.rb");
 
 	// call a function which add 2 integers
-		script.callFunction<int>("add", 5, 9);
+	script.callFunction<int>("add", 5, 9);
 
 	// call a static method named "staticHi" of a class named Fred which return a string
-		script.callStaticMethod<std::string>("Fred", "staticHi");
+	script.callStaticMethod<std::string>("Fred", "staticHi");
 
 	// create an instance of the class Fred named fred with the constructor parametor,
     // then get the object and at the end call a method of this object
-		script.createObject("Fred", "fred", "cat", 99);
-		script.getObject<json>("fred");
-        script.callMethod<std::string>("fred", "hi");
+	script.createObject("Fred", "fred", "cat", 99);
+	script.getObject<json>("fred");
+    script.callMethod<std::string>("fred", "hi");
 
 	// store an integer and then get it back
-		script.storeValue("myInt", 55);
-		script.getValue<int>("myInt");
+	script.storeValue("myInt", 55);
+	script.getValue<int>("myInt");
 }
 ```
