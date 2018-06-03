@@ -98,8 +98,4 @@ class Fred
 		return "static hi"
 	end
 end
-
-fred = Fred.new('cat', 99)
-
-my_str = "Hello World!"
 ```
