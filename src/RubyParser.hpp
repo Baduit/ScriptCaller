@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 namespace ScriptCaller
 {
@@ -20,7 +21,7 @@ using FileInformation = std::pair<FunctionList, ClassList>;
 class RubyParser
 {
 	public:
-		RubyParser() = default;
+		RubyParser() { _endBlockDelim = {"def", "class", "if", "begin", "case", "do", "while", "until", "for", "unless"}; }
 
 	private:
 		void	openFile(const std::string& fileName) { _file.open(fileName); }
@@ -43,51 +44,43 @@ class RubyParser
 			return chunks;
 		}
 
+		bool	isCharStringDelim(char c) { return (c == '\'' || c == 34) ? true : false; }
+		bool	isStrEndBlock(const std::string& str) { return (str == "end") ? true : false; }
+		bool	isStrBeginBlock(const std::string& str) { return (std::find(_endBlockDelim.begin(), _endBlockDelim.end(), str) != std::end(_endBlockDelim)) ? true : false; }
+		bool	isStrBeginFunc(const std::string& str) { return (str == "def") ? true : false; }
+		bool	isStrBeginClass(const std::string& str) { return (str == "class") ? true : false; }
+
+
 		void	extractInformationFromChunks(const auto& chunks)
 		{
 			int		blockDepth = 0;
 			bool	isInString = false;
 			bool	isNextClass = false;
 			bool	isNextFunction = false;
+
 			for (const auto& [str, c]: chunks)
 			{
-				// everything in a string is useless
 				if (isInString)
 				{
-					// check if this is the last chunk of the string
-					if (c == '\'' || c == 34)
+					if (isCharStringDelim(c))
 						isInString = false;
 					continue;
 				}
 
-				// register the usefull informations
-				if (isNextFunction && blockDepth == 1 && !isInString)
+				if (isNextFunction && blockDepth == 1)
 					addFunction(str); 
-				else if (isNextClass && blockDepth == 1 && !isInString)
+				else if (isNextClass && blockDepth == 1)
 					addClass(str);
 
-				// here we can reset class and function boolean because they have been added if usefull
-				isNextClass = false;
-				isNextFunction = false;
-
-				// detect if the next chunk will be a class or a function
-				if (str == "def")
-					isNextFunction = true;
-				else if (str == "class")
-					isNextClass = true;
-
-				// calculating the depth
-				
-				if (str == "end")
+				isNextFunction = isStrBeginFunc(str) ? true : false;
+				isNextClass = isStrBeginClass(str) ? true : false;
+	
+				if (isStrEndBlock(str))
 					--blockDepth;
-				if (str == "def" || str == "class" || str == "if" ||
-					str == "begin" || str == "case" || str == "do" ||
-					str == "while" || str == "until" || str == "for" ||
-					str == "unless")
+				if (isStrBeginBlock(str))
 					++blockDepth;
 
-				// at the end, check is the next chunk will be in a string
-				if (c == '\'' || c == 34)
+				if (isCharStringDelim(c))
 					isInString = true;
 			}
 		}
@@ -114,6 +107,8 @@ class RubyParser
 		std::ifstream	_file;
 		FunctionList	_functions;
 		ClassList		_classes;
+
+		Strings			_endBlockDelim;
 };
 
 }
