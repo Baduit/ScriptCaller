@@ -28,6 +28,7 @@ For the moment the code should not work on windows because i use named pipe and 
 ### Run the tests
 In order to run the test on linux:
 * mkdir build
+* cd build
 * cmake ..
 * make
 * ./test.exe
