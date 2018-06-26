@@ -15,15 +15,15 @@ You can:
 * get one of the stored value
 
 ## How does it work?
-It read a ruby file and extract the name of the classes and functions, then it create an intermediate ruby script in order to be able to have a communication between the C++ executable and the script ruby, then it start in a thread the script. The C++ programme can call the script by telling him which functions/object/classes to use/create with the arguments and then the script send the response.
+It reads a ruby file and extracts the name of the classes and functions, then it creates an intermediate ruby script in order to be able to have a communication between the C++ executable and the script ruby, then it starts in a thread the script. The C++ programme can call the script by telling him which functions/object/classes to use/create with the arguments and then the script sends the response.
 
 ## How to install it
 This is a header only library, so you just need to include the header in the folder __src__ (but not need to include the files from the folder test)
 
 ## The tests
 ### Description
-The current tests are very basic and does not show the error handling but it show that a normal utilisation of the library works fine, i will probably add more tests in the future and if you want to, feel free to contribute. I only ran the test on my computer with the ubuntu bash of windows 10.
-For the moment the code should not work on windows because i use named pipe and the system calls are différent on windows.
+The current tests are very basic and does not show the error handling but it shows that a normal utilisation of the library works fine, i will probably add more tests in the future and if you want to, feel free to contribute. I only ran the test on my computer with the ubuntu bash of windows 10.
+For the moment the code should not work on windows because i use named pipe and the system calls are different on windows.
 
 ### Run the tests
 In order to run the test on linux:
@@ -33,7 +33,7 @@ In order to run the test on linux:
 * make
 * ./test.exe
 
-Then you should see the number of successful tests, warnings, errors and critical errors and if there is errors you will see the file, the line, the expression of the test and the result (warning, error or critical erros).
+Then you should see the number of successful tests, warnings, errors and critical errors and if there are errors you will see the file, the line, the expression of the test and the result (warning, error or critical erros).
 
 ### Why not use the Boost unit test library or an equivalent?
 It is a personnal project and i wanted develop the little tool to manage the testing on my own for the fun.
