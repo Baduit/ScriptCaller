@@ -76,7 +76,7 @@ class RubyScriptCaller
 		}
 
 	private:
-		RubyFile		_rubyFile; // remplacer ça par un communicator et un rubyScritCreator
+		RubyFile		_rubyFile;
 		Communicator	_communicator;
 };
 

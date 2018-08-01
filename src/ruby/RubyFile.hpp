@@ -9,13 +9,7 @@
 #include <cstdlib>
 #include <memory>
 
-#include "json.hpp"
-
-// for convenience
-using json = nlohmann::json;
-using Strings = std::vector<std::string>;
-
-#include "RandGen.hpp"
+#include "../RandGen.hpp"
 #include "../communications/Communicator.hpp"
 
 namespace ScriptCaller
