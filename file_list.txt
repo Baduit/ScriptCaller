@@ -1,0 +1,8 @@
+./src/communications/INamedPipe.hpp
+./src/communications/NamedPipe.hpp
+./src/communications/json.hpp
+./src/communications/Communicator.hpp
+./src/RandGen.hpp
+./src/ruby/RubyParser.hpp
+./src/ruby/RubyFile.hpp
+./src/ruby/RubyScriptCaller.hpp

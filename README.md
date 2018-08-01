@@ -18,7 +18,7 @@ You can:
 It reads a ruby file and extracts the name of the classes and functions, then it creates an intermediate ruby script in order to be able to have a communication between the C++ executable and the script ruby, then it starts in a thread the script. The C++ programme can call the script by telling him which functions/object/classes to use/create with the arguments and then the script sends the response.
 
 ## How to install it
-This is a header only library, so you just need to include the header in the folder __src__ (but not need to include the files from the folder test)
+This is a header only library, so you just need to include the file __ScriptCaller.hpp__ located in the folder __unique_header__ or all the headers located in the folder __src__.
 
 ## The tests
 ### Description
