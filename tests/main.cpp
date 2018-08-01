@@ -1,14 +1,13 @@
 #include <iostream>
 #include <string>
 
-#include "tests/AutoTest.hpp"
-#include "tests/TestRubyParser.hpp"
-#include "tests/TestRubyFile.hpp"
-#include "tests/TestRubyScriptCaller.hpp"
+#include "AutoTest.hpp"
+#include "TestRubyParser.hpp"
+#include "TestRubyScriptCaller.hpp"
 
 int main(int argc, char **argv)
 {
-    auto result = Test::AutoTest(&basicTestRubyParser, &basicTestRubyFile, &basicTestRubyScriptCaller)();
+    auto result = Test::AutoTest(&basicTestRubyParser, &basicTestRubyScriptCaller)();
 
     std::cout << result;
 

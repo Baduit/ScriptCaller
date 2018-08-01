@@ -2,6 +2,6 @@
 
 #include "RubyScriptCaller.hpp"
 #include "json.hpp"
-#include "tests/AutoTest.hpp"
+#include "AutoTest.hpp"
 
 Test::TestSuiteResult	basicTestRubyScriptCaller();

@@ -7,7 +7,7 @@ TestSuiteResult	basicTestRubyScriptCaller()
 {
 	TEST_BEGIN
 
-	std::string testRubyFile = "../src/ruby/functions.rb";
+	std::string testRubyFile = "../tests/ruby/functions.rb";
 
 	ScriptCaller::RubyScriptCaller script(testRubyFile);
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RubyParser.hpp"
-#include "tests/AutoTest.hpp"
+#include "AutoTest.hpp"
 
 #include <algorithm>
 

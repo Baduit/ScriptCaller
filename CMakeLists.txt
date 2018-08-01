@@ -8,13 +8,12 @@ project(ScriptCaller)
 
 set (CMAKE_CXX_FLAGS "-std=gnu++17 -pthread -g")
 
-include_directories(test PRIVATE ./src)
+include_directories(test PRIVATE ./src ./src/ruby ./tests ./tests/ruby)
 
 set(SRCS
-    src/tests/main.cpp
-    src/tests/TestRubyFile.cpp
-    src/tests/TestRubyParser.cpp
-    src/tests/TestRubyScriptCaller.cpp
+    tests/main.cpp
+    tests/ruby/TestRubyParser.cpp
+    tests/ruby/TestRubyScriptCaller.cpp
     )
 
 add_executable(test.exe ${SRCS})

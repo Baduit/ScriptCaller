@@ -7,7 +7,7 @@ TestSuiteResult	basicTestRubyParser()
 {
 	TEST_BEGIN
 
-	auto [functions, classes] = RubyParser()("../src/ruby/functions.rb");
+	auto [functions, classes] = RubyParser()("../tests/ruby/functions.rb");
 
 	TEST_ERROR((functions.size() == 4))
 	TEST_ERROR((std::find(functions.begin(), functions.end(), "hello") != std::end(functions)))
