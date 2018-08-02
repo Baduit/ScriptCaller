@@ -1,6 +1,6 @@
 ./src/communications/INamedPipe.hpp
 ./src/communications/NamedPipe.hpp
-./src/communications/json.hpp
+./ext_lib/json.hpp
 ./src/communications/Communicator.hpp
 ./src/RandGen.hpp
 ./src/ruby/RubyParser.hpp

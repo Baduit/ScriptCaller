@@ -8,7 +8,7 @@ project(ScriptCaller)
 
 set (CMAKE_CXX_FLAGS "-std=gnu++17 -pthread -g")
 
-include_directories(test PRIVATE ./src ./src/ruby ./tests ./tests/ruby)
+include_directories(test PRIVATE ./src ./src/ruby ./tests ./tests/ruby ./ext_lib)
 
 set(SRCS
     tests/main.cpp
