@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 project(ScriptCaller)
 
-set (CMAKE_CXX_FLAGS "-std=gnu++17 -pthread -g")
+set (CMAKE_CXX_FLAGS "-std=c++17 -pthread -g")
 
 include_directories(test PRIVATE ./src ./src/ruby ./tests ./tests/ruby ./ext_lib)
 
