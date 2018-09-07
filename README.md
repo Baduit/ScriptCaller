@@ -17,6 +17,9 @@ You can:
 ## How does it work?
 It reads a ruby file and extracts the name of the classes and functions, then it creates an intermediate ruby script in order to be able to have a communication between the C++ executable and the script ruby, then it starts in a thread the script. The C++ programme can call the script by telling him which functions/object/classes to use/create with the arguments and then the script sends the response.
 
+## Why don't you use the Ruby C API?
+The C API is not very well documented, if you want to use it in C++ you need to encapsulate all the C code with raw pointers and stuff like that. Type conversion is complicated etc. I think my method is way more easy, in the future i can extend it to nearly every interpreted langage. I think the only disadvantage is that it slower that C API, but it is still very fast so for almost all the the possible you could do with this library you won't be able to it.
+
 ## How to install it
 This is a header only library, so you just need to include the file __ScriptCaller.hpp__ located in the folder __unique_header__ or all the headers located in the folder __src__.
 
@@ -35,7 +38,7 @@ In order to run the test on linux:
 
 Then you should see the number of successful tests, warnings, errors and critical errors and if there are errors you will see the file, the line, the expression of the test and the result (warning, error or critical erros).
 
-### Why not use the Boost unit test library or an equivalent?
+## Why not use the Boost unit test library or an equivalent?
 It is a personnal project and i wanted develop the little tool to manage the testing on my own for the fun.
 
 ## How to use it?
