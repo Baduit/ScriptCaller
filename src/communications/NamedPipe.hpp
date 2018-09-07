@@ -48,8 +48,7 @@ class NamedPipe: public INamedPipe
 			}
 			else if (pipeState == READ)
 			{
-				if ((_fd = ::open(_name.c_str(), O_RDONLY)) == -1)
-					return false;
+				_fstream.open(_name, std::ios::in);
 			}
 			else
 			{
@@ -80,14 +79,13 @@ class NamedPipe: public INamedPipe
 			return true;
 		}
 
-		std::string			read()
+		std::string			getline()
 		{
 			if (getPipeState() != READ)
 				return "";
-			char buf[MAX_BUF];
-			int nb_lu = ::read(_fd, buf, MAX_BUF);
-			buf[nb_lu] = 0;
-			return std::string(buf);
+			std::string str;
+			std::getline(_fstream, str, '\n');
+			return str;
 		}
 
 		// overload stream operator << and >> to do maybe

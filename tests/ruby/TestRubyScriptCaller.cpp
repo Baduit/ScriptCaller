@@ -15,7 +15,7 @@ TestSuiteResult	basicTestRubyScriptCaller()
 	{
 		// callFunction
 		{
-			TEST_ERROR((script.callFunction<std::string>("hello") == "Hello world"));
+			TEST_ERROR((script.callFunction<std::string>("hello") == "Hello\nworld"));
 			TEST_ERROR((script.callFunction<int>("add", 5, 9) == 14));
 			TEST_ERROR((script.callFunction<std::string>("concat", "Hello", " world") == "Hello world"));
 

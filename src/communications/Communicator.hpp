@@ -155,7 +155,7 @@ class Communicator
 		void	callScript(const json& j)
 		{
 			sendInputToScript(j.dump());
-			_outputNamedPipe->read();
+			_outputNamedPipe->getline();
 		}
 
 		template<typename returnType>
@@ -168,7 +168,7 @@ class Communicator
 		template<typename returnType>
 		returnType	getOutputFromScript()
 		{
-			return json::parse(_outputNamedPipe->read()).get<returnType>();
+			return json::parse(_outputNamedPipe->getline()).get<returnType>();
 		}
 
 		void		sendInputToScript(const std::string& input)

@@ -20,7 +20,7 @@ class INamedPipe
 		virtual void				close() = 0;
 		virtual void				remove() = 0;
 		virtual bool				write(const std::string& str) = 0;
-		virtual std::string			read() = 0;
+		virtual std::string			getline() = 0;
 		virtual PipeState			getPipeState() const  = 0;
 		virtual const std::string&	getName() const = 0;
 };
