@@ -64,6 +64,9 @@ int main()
 }
 ```
 
+The template parameter you can see in front of __callFunction__, __callStaticMethod__, __getObject__ and __callMethod__ is the return type.
+The type __json__ is juste a typedef for __nlohmann::json__ from the library i use to handle json. (https://github.com/nlohmann/json)
+
 Here the ruby file used to run this example
 ```ruby
 def hello()
