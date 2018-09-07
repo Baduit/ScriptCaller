@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <sys/ioctl.h>
+#include <fstream>
 
 #include "INamedPipe.hpp"
 
@@ -43,8 +44,7 @@ class NamedPipe: public INamedPipe
 			
 			if (pipeState == WRITE)
 			{	
-				if ((_fd = ::open(_name.c_str(), O_WRONLY)) == -1)
-					return false;		
+				_fstream.open(_name, std::ios::out);
 			}
 			else if (pipeState == READ)
 			{
@@ -71,11 +71,13 @@ class NamedPipe: public INamedPipe
 			::unlink(_name.c_str());
 		}
 
-		int					write(const std::string& str)
+		bool					write(const std::string& str)
 		{
 			if (getPipeState() != WRITE)
-				return -1;
-			return ::write(_fd, str.c_str(), str.length());
+				return false;
+			_fstream << str;
+			_fstream.flush();
+			return true;
 		}
 
 		std::string			read()
@@ -95,8 +97,9 @@ class NamedPipe: public INamedPipe
 		const std::string&	getName() const { return _name; }
 
 	private:
-		int			_fd;
-		PipeState	_pipeState = UNDEFINED;
-		std::string	_name;
+		int				_fd;
+		PipeState		_pipeState = UNDEFINED;
+		std::string		_name;
+		std::fstream	_fstream;
 };
 
