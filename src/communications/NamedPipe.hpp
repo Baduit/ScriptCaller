@@ -1,14 +1,10 @@
 #pragma once
 
 #include <string>
-
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <errno.h>
-#include <sys/ioctl.h>
 #include <fstream>
+
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include "INamedPipe.hpp"
 
@@ -61,7 +57,7 @@ class NamedPipe: public INamedPipe
 
 		void				close()
 		{
-			::close(_fd);
+			_fstream.close();
 			_pipeState = UNDEFINED;
 		}
 
